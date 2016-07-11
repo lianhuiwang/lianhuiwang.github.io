@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/blog/hexo-guide.html</loc>
+    
+    <lastmod>2016-07-11T10:34:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/blog/hello-world.html</loc>
+    
+    <lastmod>2016-07-11T10:26:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/404.html</loc>
+    
+    <lastmod>2016-07-11T10:26:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/about/index.html</loc>
+    
+    <lastmod>2016-07-11T10:26:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/categories/index.html</loc>
+    
+    <lastmod>2016-07-11T10:26:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lianhuiwang.github.io/tags/index.html</loc>
+    
+    <lastmod>2016-07-11T10:26:19.000Z</lastmod>
+    
+  </url>
+  
+</urlset>
