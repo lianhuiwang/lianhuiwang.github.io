@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lianhuiwang.github.io/blog/distributed-database.html</loc>
+    
+    <lastmod>2016-07-14T09:36:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lianhuiwang.github.io/blog/hexo-guide.html</loc>
     
     <lastmod>2016-07-11T10:34:04.000Z</lastmod>

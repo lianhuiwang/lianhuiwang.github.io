@@ -278,6 +278,133 @@
             
               
                 
+                <a class="post-title-link" href="/blog/distributed-database.html" itemprop="url">
+                  实现分布式数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-14T16:22:15+08:00" content="2016-07-14">
+              2016-07-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/distributed-computation/" itemprop="url" rel="index">
+                    <span itemprop="name">distributed-computation</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/distributed-database.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/distributed-database.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文主要记录实现一个分布式数据库需要哪些知识和相关的实现点，供有针对性的研究和代码实现。</p>
+<p>在数据库领域分为OLAP和OLTP，在单机方面目前主流的OLAP系统有MySQL, PostgreSQL, Informatica, MonetDB/X100, Vectorwise等等。 而在Hadoop上面流行的分布式计算系统有Hive, Impala, Spark, Flink, Drill, Presto, Tez, Tajo, Hawq等等。后续如果有一些流行的系统，在补充这个名单。</p>
+<p>分布式数据库是一款能够分布式计算和存储的数据库，首先是一款数据库，那么它就包括数据库的一些步骤，大致有以下：SQL Parser, AST Opt, Logical Optimizer, CBO Optimizer, Physical Plan(DAG) Optimizer, DAG Scheduler等。其中Logical Optimizer和CBO Optimizer是非常重要的。</p>
+<p>从分布式执行的角度来看，DAG执行和stage的Pipeline执行方式也是很重要的二个点，主要影响多个结点之间的数据传输(Shuffle)和整个计划(DAG)的执行快慢。Shuffle有Push和Pull二种方式，这也导致DAG执行时是否需要提前将Reduce端的task提前启动。</p>
+<p>对于单机的执行来说，就是对Select,Filter,Project,Join,Groupby这几种常见的操作进行优化.表达式Byte code generation和Vector Engine(SIMD), JIT Compiler都是对单机执行的优化，充分利用CPU的优势。还有就是内存管理，对单个task多个操作的内存进行控制，以及在JVM平台上对各个数据类型的内存控制以及减少GC的影响。</p>
+<p>对于在分布式计划方面，1. 尽量减少Exchange操作(即shuffle),比如有相同的key上做HashJoin和Groupby操作，可以把二个操作放在一起。2.相同的操作的结果共用，比如多次使用了同一个subquery. 3.CBO优化，比如对于多个Join，哪一个先执行哪一个后执行。</p>
+<p>存储方面，主要就是列式存储，目前流行的有Parquet,ORC等，主要任务就是尽可能减少原始数据的扫描量。更深层次的优化就是提前建立好索引，这一块有Elastic Search,Druid,华为的Carbondata等。</p>
+<p>在测试方面，大家都一致使用tcpds 99个SQL来进行实际运行测试。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/hexo-guide.html" itemprop="url">
                   hexo-guide
                 </a>
@@ -527,7 +654,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +662,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -544,7 +671,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
